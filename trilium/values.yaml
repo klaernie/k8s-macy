@@ -6,7 +6,7 @@ replicaCount: 1
 
 image:
   repository: zadam/trilium
-  tag: "0.60.4"
+  tag: "0.62.6"
   pullPolicy: IfNotPresent
 
 imagePullSecrets: []
