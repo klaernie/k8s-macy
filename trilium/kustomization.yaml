@@ -61,7 +61,8 @@ helmCharts:
         nginx.ingress.kubernetes.io/proxy-body-size: 15m
       hosts:
         - host: family.trilium.cloud.ak-online.be
-          paths: []
+          paths:
+            - /
       tls:
         - secretName: ingress-family-tls
           hosts:
@@ -86,3 +87,25 @@ helmCharts:
     affinity: {}
 
 namespace: trilium
+
+patches:
+- patch: |-
+    - op: replace
+      path: "/apiVersion"
+      value: networking.k8s.io/v1
+    - op: replace
+      path: "/spec/rules/0/http/paths/0"
+      value:
+        backend:
+          service:
+            name: family-notes
+            port:
+              name: http
+        path: /
+        pathType: Prefix
+    - op: add
+      path: /spec/ingressClassName
+      value: nginx
+  target:
+    group: networking.k8s.io
+    version: v1beta1
