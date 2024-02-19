@@ -109,3 +109,10 @@ patches:
   target:
     group: networking.k8s.io
     version: v1beta1
+- patch: |-
+    - op: remove
+      path: /spec/template/spec/containers/0/securityContext
+  target:
+    group: apps
+    version: v1
+    kind: StatefulSet
