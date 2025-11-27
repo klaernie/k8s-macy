@@ -1,2 +1,16 @@
 resources:
   - namespace.yaml
+  - deployment-containerssh.yaml
+  - rolebinding-containerssh.yaml
+  - role-containerssh.yaml
+  - serviceaccount-containerssh.yaml
+  - service-containerssh.yaml
+  - service-auth-config.yaml
+  - secrets.enc.yaml
+
+configMapGenerator:
+  - name: containerssh-config
+    files:
+      - config/config.yaml
+    options:
+      disableNameSuffixHash: true

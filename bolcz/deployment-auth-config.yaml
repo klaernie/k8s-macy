@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth-config
+  namespace: bolcz
+  labels:
+    app: auth-config
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: auth-config
+  template:
+    metadata:
+      labels:
+        app: auth-config
+    spec:
+      containers:
+        - name: auth-config
+          image: ghcr.io/klaernie/single-user-auth-config:v0.5
+          securityContext:
+            readOnlyRootFilesystem: true
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - secretRef:
+                name: containerssh-login
+      securityContext:
+        runAsNonRoot: true
