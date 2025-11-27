@@ -1,6 +1,7 @@
 resources:
   - namespace.yaml
   - deployment-containerssh.yaml
+  - deployment-auth-config.yaml
   - rolebinding-containerssh.yaml
   - role-containerssh.yaml
   - serviceaccount-containerssh.yaml
