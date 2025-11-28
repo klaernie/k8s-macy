@@ -1,0 +1,168 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    k8s-app: matrix
+  name: matrix
+  namespace: matrix
+  annotations:
+    reloader.stakater.com/auto: "true"
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      k8s-app: matrix
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        k8s-app: matrix
+      name: matrix
+    spec:
+      containers:
+      - env:
+        - name: SYNAPSE_CONFIG_DIR
+          value: /config
+        - name: SYNAPSE_CONFIG_PATH
+          value: /config/homeserver.yaml
+        - name: SYNAPSE_REPORT_STATS
+          value: yes
+        image: ghcr.io/element-hq/synapse:v1.142.1
+        args:
+          - run
+          - -m
+          - synapse.app.homeserver
+          - --config-path
+          - /config/conf.d/
+        imagePullPolicy: Always
+        name: synapse
+        securityContext:
+          privileged: true
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /config/conf.d/homeserver.yaml
+          name: matrix-cm
+          subPath: homeserver.yaml
+        - mountPath: /config/conf.d/secrets.yaml
+          name: matrix-homeserver-secrets
+          subPath: secrets.yaml
+        - mountPath: /config/ak-online.be.log.config
+          name: matrix-cm
+          subPath: ak-online.be.log.config
+        - mountPath: /config/oembed-providers.json
+          name: matrix-cm
+          subPath: oembed-providers.json
+        - mountPath: /config/as-disco-bridge.yaml
+          name: disco-bridge-cm
+          subPath: registration.yaml
+        - mountPath: /config/as-wa-bridge.yaml
+          name: wa-bridge-cm
+          subPath: registration.yaml
+        - mountPath: /config/as-fb-bridge.yaml
+          name: fb-bridge-cm
+          subPath: registration.yaml
+        - mountPath: /config/as-gc-bridge.yaml
+          name: gc-bridge-cm
+          subPath: registration.yaml
+        - mountPath: /config/as-instabridge.yaml
+          name: insta-cm
+          subPath: registration.yaml
+        - mountPath: /config/as-twitchbridge.yaml
+          name: twitch-cm
+          subPath: appservice-registration-irc.yaml
+        - mountPath: /data
+          name: matrix-pv
+          subPath: matrix
+        - mountPath: /config/ak-online.be.signing.key
+          name: matrix-key
+          subPath: ak-online.be.signing.key
+      - name: postfix-sidecar
+        image: juanluisbaptiste/postfix:latest
+        imagePullPolicy: Always
+        env:
+          - name: LOG_SUBJECT
+            value: 'yes'
+        envFrom:
+          - secretRef:
+              name: postfix-config
+
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      terminationGracePeriodSeconds: 10
+      volumes:
+      - name: matrix-homeserver-secrets
+        secret:
+          defaultMode: 420
+          items:
+          - key: secrets.yaml
+            path: secrets.yaml
+          secretName: matrix-homeserver
+      - name: matrix-key
+        secret:
+          defaultMode: 420
+          items:
+          - key: ak-online.be.signing.key
+            path: ak-online.be.signing.key
+          secretName: matrix-key
+      - name: matrix-pv
+        persistentVolumeClaim:
+          claimName: matrix-storage
+      - name: matrix-cm
+        configMap:
+          name: matrix
+          defaultMode: 420
+          items:
+          - key: homeserver.yaml
+            path: homeserver.yaml
+          - key: ak-online.be.log.config
+            path: ak-online.be.log.config
+          - key: oembed-providers.json
+            path: oembed-providers.json
+      - name: disco-bridge-cm
+        configMap:
+          name: disco-bridge
+          defaultMode: 420
+          items:
+          - key: registration.yaml
+            path: registration.yaml
+      - name: wa-bridge-cm
+        configMap:
+          name: wa-bridge
+          defaultMode: 420
+          items:
+          - key: registration.yaml
+            path: registration.yaml
+      - name: fb-bridge-cm
+        configMap:
+          name: fb-bridge
+          defaultMode: 420
+          items:
+          - key: registration.yaml
+            path: registration.yaml
+      - name: gc-bridge-cm
+        configMap:
+          name: gc-bridge
+          defaultMode: 420
+          items:
+          - key: registration.yaml
+            path: registration.yaml
+      - name: insta-cm
+        configMap:
+          name: instabridge
+          defaultMode: 420
+          items:
+          - key: registration.yaml
+            path: registration.yaml
+      - name: twitch-cm
+        configMap:
+          name: twitch-bridge
+          defaultMode: 420
+          items:
+          - key: appservice-registration-irc.yaml
+            path: appservice-registration-irc.yaml

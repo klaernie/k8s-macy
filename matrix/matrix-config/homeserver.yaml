@@ -1,0 +1,73 @@
+# Configuration file for Synapse.
+#
+# For more information on how to configure Synapse, including a complete accounting of
+# each option, go to docs/usage/configuration/config_documentation.md or
+# https://matrix-org.github.io/synapse/latest/usage/configuration/config_documentation.html
+server_name: "ak-online.be"
+pid_file: /data/homeserver.pid
+listeners:
+  - port: 8008
+    tls: false
+    type: http
+    x_forwarded: true
+    resources:
+      - names: [client, federation]
+        compress: false
+#database: is entirely in the secret
+log_config: "/config/ak-online.be.log.config"
+
+media_store_path: /data/media_store
+max_upload_size: 500M
+dynamic_thumbnails: true
+
+url_preview_enabled: true
+url_preview_ip_range_blacklist:
+  - '127.0.0.0/8'
+  - '10.0.0.0/8'
+  - '172.16.0.0/12'
+  - '192.168.0.0/16'
+  - '100.64.0.0/10'
+  - '192.0.0.0/24'
+  - '169.254.0.0/16'
+  - '192.88.99.0/24'
+  - '198.18.0.0/15'
+  - '192.0.2.0/24'
+  - '198.51.100.0/24'
+  - '203.0.113.0/24'
+  - '224.0.0.0/4'
+  - '::1/128'
+  - 'fe80::/10'
+  - 'fc00::/7'
+  - '2001:db8::/32'
+  - 'ff00::/8'
+  - 'fec0::/10'
+
+report_stats: true
+signing_key_path: "/config/ak-online.be.signing.key"
+suppress_key_server_warning: true
+trusted_key_servers:
+  - server_name: "matrix.org"
+
+email:
+  smtp_host: localhost
+  smtp_port: 25
+  notif_from: matrix@mia.ak-online.be
+
+serve_server_wellknown: true
+enable_search: true
+admin_contact: 'mailto:kandre@ak-online.be'
+allow_device_name_lookup_over_federation: true
+
+app_service_config_files:
+  - /config/as-instabridge.yaml
+  - /config/as-gc-bridge.yaml
+  - /config/as-fb-bridge.yaml
+  - /config/as-wa-bridge.yaml
+  - /config/as-disco-bridge.yaml
+  - /config/as-twitchbridge.yaml
+
+oembed:
+  additional_providers:
+    - /config/oembed-providers.json
+
+# vim:ft=yaml

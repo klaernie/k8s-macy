@@ -1,0 +1,8 @@
+configMapGenerator:
+  - name: matrix
+    files:
+      - homeserver.yaml
+      - ak-online.be.log.config
+      - oembed-providers.json
+    options:
+      disableNameSuffixHash: true
