@@ -15,6 +15,7 @@ kubernetes:
     bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
   pod:
     metadata:
+      generateName: guest-
       namespace: bolcz
     spec:
       containers:
