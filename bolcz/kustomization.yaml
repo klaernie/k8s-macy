@@ -2,4 +2,7 @@ resources:
   - namespace.yaml
   - sftp-upload
   - pvc-wwwdata.yaml
+  - deployment-nginx.yaml
+  - svc-nginx.yaml
+  - ingress-renebolcz-customer.yaml
 

@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+  name: renebolcz-customer
+  namespace: bolcz
+spec:
+  rules:
+  - host: &host renebolcz.customer.ak-online.be
+    http:
+      paths:
+      - backend:
+          service:
+            name: nginx
+            port:
+              number: 80
+        pathType: ImplementationSpecific
+  tls:
+  - hosts:
+    - *host
+    secretName: renebolcz-customer-tls
