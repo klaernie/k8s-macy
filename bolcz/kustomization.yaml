@@ -1,4 +1,5 @@
 resources:
   - namespace.yaml
   - sftp-upload
+  - pvc-wwwdata.yaml
 
