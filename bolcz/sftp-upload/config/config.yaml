@@ -17,6 +17,9 @@ kubernetes:
     metadata:
       generateName: guest-
       namespace: bolcz
+    #shellCommand:
+    #  - /bin/bash
+    #disableAgent: true
     spec:
       automountServiceAccountToken: false
       restartPolicy: Never

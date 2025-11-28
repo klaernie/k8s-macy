@@ -1,17 +1,4 @@
 resources:
   - namespace.yaml
-  - deployment-containerssh.yaml
-  - deployment-auth-config.yaml
-  - rolebinding-containerssh.yaml
-  - role-containerssh.yaml
-  - serviceaccount-containerssh.yaml
-  - service-containerssh.yaml
-  - service-auth-config.yaml
-  - secrets.enc.yaml
+  - sftp-upload
 
-configMapGenerator:
-  - name: containerssh-config
-    files:
-      - config/config.yaml
-    options:
-      disableNameSuffixHash: true
