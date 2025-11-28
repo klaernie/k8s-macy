@@ -18,6 +18,8 @@ kubernetes:
       generateName: guest-
       namespace: bolcz
     spec:
+      automountServiceAccountToken: false
+      restartPolicy: Never
       containers:
         - name: shell
           image: ghcr.io/klaernie/containerssh-guest-image:latest
