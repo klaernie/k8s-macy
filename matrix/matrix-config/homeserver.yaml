@@ -89,4 +89,7 @@ oidc_providers:
       - attribute: roles
         value: user
 
+password_config:
+  enabled: only_for_reauth
+
 # vim:ft=yaml
