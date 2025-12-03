@@ -85,5 +85,8 @@ oidc_providers:
     backchannel_logout_enabled: true
     allow_existing_users: true
     enable_registration: false
+    attribute_requirements:
+      - attribute: roles
+        value: user
 
 # vim:ft=yaml
