@@ -8,6 +8,7 @@ resources:
   - 014_pvc.yaml
   - 015_deployment.yaml
   - 017_svc_matrix.yaml
+  - 017_svc_synapse.yaml
   - 018_ingress.yaml
   - secrets.enc.yaml
   - gc-bridge
