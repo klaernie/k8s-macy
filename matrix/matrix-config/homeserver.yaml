@@ -4,6 +4,7 @@
 # each option, go to docs/usage/configuration/config_documentation.md or
 # https://matrix-org.github.io/synapse/latest/usage/configuration/config_documentation.html
 server_name: "ak-online.be"
+public_baseurl: "https://matrix.cloud.ak-online.be"
 pid_file: /data/homeserver.pid
 listeners:
   - port: 8008
@@ -69,5 +70,20 @@ app_service_config_files:
 oembed:
   additional_providers:
     - /config/oembed-providers.json
+
+oidc_providers:
+  - idp_id: keycloak
+    idp_name: "Keycloak"
+    issuer: "https://keycloak.ak-online.be/realms/master"
+    client_id: "synapse"
+    client_secret_path: /config/oidc-client-secret
+    scopes: ["openid", "profile"]
+    user_mapping_provider:
+      config:
+        localpart_template: "{{ user.preferred_username }}"
+        display_name_template: "{{ user.name }}"
+    backchannel_logout_enabled: true
+    allow_existing_users: true
+    enable_registration: false
 
 # vim:ft=yaml

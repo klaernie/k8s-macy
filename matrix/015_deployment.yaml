@@ -51,6 +51,9 @@ spec:
         - mountPath: /config/conf.d/secrets.yaml
           name: matrix-homeserver-secrets
           subPath: secrets.yaml
+        - mountPath: /config/oidc-client-secret
+          name: matrix-homeserver-secrets
+          subPath: oidc-client-secret
         - mountPath: /config/ak-online.be.log.config
           name: matrix-cm
           subPath: ak-online.be.log.config
@@ -102,6 +105,8 @@ spec:
           items:
           - key: secrets.yaml
             path: secrets.yaml
+          - key: oidc-client-secret
+            path: oidc-client-secret
           secretName: matrix-homeserver
       - name: matrix-key
         secret:
