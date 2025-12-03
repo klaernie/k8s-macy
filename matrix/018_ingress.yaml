@@ -14,9 +14,9 @@ spec:
       paths:
       - backend:
           service:
-            name: matrix
+            name: synapse
             port:
-              number: 8008
+              number: 80
         pathType: ImplementationSpecific
   tls:
   - hosts:
