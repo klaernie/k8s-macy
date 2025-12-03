@@ -54,6 +54,9 @@ spec:
         - mountPath: /config/oidc-client-secret
           name: matrix-homeserver-secrets
           subPath: oidc-client-secret
+        - mountPath: /config/ak-online.be.signing.key
+          name: matrix-homeserver-secrets
+          subPath: ak-online.be.signing.key
         - mountPath: /config/ak-online.be.log.config
           name: matrix-cm
           subPath: ak-online.be.log.config
@@ -81,9 +84,6 @@ spec:
         - mountPath: /data
           name: matrix-pv
           subPath: matrix
-        - mountPath: /config/ak-online.be.signing.key
-          name: matrix-key
-          subPath: ak-online.be.signing.key
       - name: postfix-sidecar
         image: juanluisbaptiste/postfix:latest
         imagePullPolicy: Always
@@ -107,14 +107,9 @@ spec:
             path: secrets.yaml
           - key: oidc-client-secret
             path: oidc-client-secret
-          secretName: matrix-homeserver
-      - name: matrix-key
-        secret:
-          defaultMode: 420
-          items:
           - key: ak-online.be.signing.key
             path: ak-online.be.signing.key
-          secretName: matrix-key
+          secretName: matrix-homeserver
       - name: matrix-pv
         persistentVolumeClaim:
           claimName: matrix-storage
