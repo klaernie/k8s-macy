@@ -84,7 +84,7 @@ oidc_providers:
         display_name_template: "{{ user.name }}"
     backchannel_logout_enabled: true
     allow_existing_users: true
-    enable_registration: false
+    enable_registration: true
     attribute_requirements:
       - attribute: roles
         value: user
