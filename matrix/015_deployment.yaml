@@ -67,7 +67,7 @@ spec:
           name: fb-bridge-cm
           subPath: registration.yaml
         - mountPath: /config/as-gc-bridge.yaml
-          name: gc-bridge-cm
+          name: gc-bridge
           subPath: registration.yaml
         - mountPath: /config/as-instabridge.yaml
           name: insta-cm
@@ -145,9 +145,9 @@ spec:
           items:
           - key: registration.yaml
             path: registration.yaml
-      - name: gc-bridge-cm
-        configMap:
-          name: gc-bridge
+      - name: gc-bridge
+        secret:
+          secretName: as-gc-bridge
           defaultMode: 420
           items:
           - key: registration.yaml

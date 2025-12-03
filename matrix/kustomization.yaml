@@ -10,3 +10,4 @@ resources:
   - 017_svc_matrix.yaml
   - 018_ingress.yaml
   - secrets.enc.yaml
+  - gc-bridge

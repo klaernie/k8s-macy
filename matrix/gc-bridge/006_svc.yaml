@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    k8s-app: gc-bridge
+  name: gc-bridge
+  namespace: matrix
+spec:
+  ports:
+  - name: gc-bridge
+    port: 29320
+    protocol: TCP
+    targetPort: 29320
+  selector:
+    k8s-app: gc-bridge
+  sessionAffinity: None
+  type: ClusterIP

@@ -1,0 +1,11 @@
+resources:
+  - 004_pvc.yaml
+  - 005_deployment.yaml
+  - 006_svc.yaml
+
+configMapGenerator:
+  - name: gc-bridge
+    files:
+      - config/config.yaml
+    options:
+      disableNameSuffixHash: true
