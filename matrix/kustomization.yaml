@@ -12,3 +12,5 @@ resources:
   - 018_ingress.yaml
   - secrets.enc.yaml
   - gc-bridge
+
+namespace: matrix
