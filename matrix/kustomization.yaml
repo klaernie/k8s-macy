@@ -12,5 +12,13 @@ resources:
   - 018_ingress.yaml
   - secrets.enc.yaml
   - gc-bridge
+  - disco-bridge
+
+configMapGenerator:
+  - name: copy-and-merge-config-script
+    files:
+      - copy-and-merge-config.sh
+    options:
+      disableNameSuffixHash: true
 
 namespace: matrix

@@ -64,7 +64,7 @@ spec:
           name: matrix-cm
           subPath: oembed-providers.json
         - mountPath: /config/as-disco-bridge.yaml
-          name: disco-bridge-cm
+          name: disco-bridge
           subPath: registration.yaml
         - mountPath: /config/as-wa-bridge.yaml
           name: wa-bridge-cm
@@ -124,13 +124,10 @@ spec:
             path: ak-online.be.log.config
           - key: oembed-providers.json
             path: oembed-providers.json
-      - name: disco-bridge-cm
-        configMap:
-          name: disco-bridge
+      - name: disco-bridge
+        secret:
+          secretName: as-disco-bridge
           defaultMode: 420
-          items:
-          - key: registration.yaml
-            path: registration.yaml
       - name: wa-bridge-cm
         configMap:
           name: wa-bridge
