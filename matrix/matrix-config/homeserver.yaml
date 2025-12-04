@@ -62,7 +62,6 @@ allow_device_name_lookup_over_federation: true
 app_service_config_files:
   - /config/as-instabridge.yaml
   - /config/as-gc-bridge.yaml
-  - /config/as-fb-bridge.yaml
   - /config/as-wa-bridge.yaml
   - /config/as-disco-bridge.yaml
 

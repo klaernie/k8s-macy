@@ -69,9 +69,6 @@ spec:
         - mountPath: /config/as-wa-bridge.yaml
           name: wa-bridge-cm
           subPath: registration.yaml
-        - mountPath: /config/as-fb-bridge.yaml
-          name: fb-bridge-cm
-          subPath: registration.yaml
         - mountPath: /config/as-gc-bridge.yaml
           name: gc-bridge
           subPath: registration.yaml
@@ -128,13 +125,6 @@ spec:
       - name: wa-bridge-cm
         configMap:
           name: wa-bridge
-          defaultMode: 420
-          items:
-          - key: registration.yaml
-            path: registration.yaml
-      - name: fb-bridge-cm
-        configMap:
-          name: fb-bridge
           defaultMode: 420
           items:
           - key: registration.yaml
