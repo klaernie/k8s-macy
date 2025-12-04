@@ -78,9 +78,6 @@ spec:
         - mountPath: /config/as-instabridge.yaml
           name: insta-cm
           subPath: registration.yaml
-        - mountPath: /config/as-twitchbridge.yaml
-          name: twitch-cm
-          subPath: appservice-registration-irc.yaml
         - mountPath: /data
           name: matrix-pv
           subPath: matrix
@@ -156,10 +153,3 @@ spec:
           items:
           - key: registration.yaml
             path: registration.yaml
-      - name: twitch-cm
-        configMap:
-          name: twitch-bridge
-          defaultMode: 420
-          items:
-          - key: appservice-registration-irc.yaml
-            path: appservice-registration-irc.yaml
