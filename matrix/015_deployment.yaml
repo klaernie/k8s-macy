@@ -57,6 +57,9 @@ spec:
         - mountPath: /config/ak-online.be.signing.key
           name: matrix-homeserver-secrets
           subPath: ak-online.be.signing.key
+        - mountPath: /config/as-doublepuppet.yaml
+          name: matrix-homeserver-secrets
+          subPath: doublepuppet.yaml
         - mountPath: /config/ak-online.be.log.config
           name: matrix-cm
           subPath: ak-online.be.log.config
@@ -103,6 +106,8 @@ spec:
             path: oidc-client-secret
           - key: ak-online.be.signing.key
             path: ak-online.be.signing.key
+          - key: doublepuppet.yaml
+            path: doublepuppet.yaml
           secretName: matrix-homeserver
       - name: matrix-pv
         persistentVolumeClaim:
