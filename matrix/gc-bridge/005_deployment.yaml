@@ -34,8 +34,7 @@ spec:
         terminationMessagePolicy: File
         volumeMounts:
         - mountPath: /data
-          name: gc-pv
-          subPath: gc
+          name: data
         - mountPath: /data/config.yaml
           name: gc-cm
           subPath: config.yaml
@@ -47,9 +46,8 @@ spec:
       schedulerName: default-scheduler
       terminationGracePeriodSeconds: 10
       volumes:
-      - name: gc-pv
-        persistentVolumeClaim:
-          claimName: gc-storage
+      - name: data
+        emptyDir:
       - name: gc-cm
         configMap:
           name: gc-bridge
