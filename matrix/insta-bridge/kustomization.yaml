@@ -1,0 +1,10 @@
+resources:
+  - 004_deployment.yaml
+  - 005_svc.yaml
+
+configMapGenerator:
+  - name: insta-bridge
+    files:
+      - config/config.yaml
+    options:
+      disableNameSuffixHash: true

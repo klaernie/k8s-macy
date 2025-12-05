@@ -76,7 +76,7 @@ spec:
           name: gc-bridge
           subPath: registration.yaml
         - mountPath: /config/as-instabridge.yaml
-          name: insta-cm
+          name: insta-bridge
           subPath: registration.yaml
         - mountPath: /data
           name: matrix-pv
@@ -126,25 +126,12 @@ spec:
       - name: disco-bridge
         secret:
           secretName: as-disco-bridge
-          defaultMode: 420
       - name: wa-bridge-cm
         configMap:
           name: wa-bridge
-          defaultMode: 420
-          items:
-          - key: registration.yaml
-            path: registration.yaml
       - name: gc-bridge
         secret:
           secretName: as-gc-bridge
-          defaultMode: 420
-          items:
-          - key: registration.yaml
-            path: registration.yaml
-      - name: insta-cm
-        configMap:
-          name: instabridge
-          defaultMode: 420
-          items:
-          - key: registration.yaml
-            path: registration.yaml
+      - name: insta-bridge
+        secret:
+          secretName: as-insta-bridge
