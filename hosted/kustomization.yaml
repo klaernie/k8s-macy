@@ -1,0 +1,9 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - 01_ns.yaml
+  - secrets.enc.yaml
+  - 03_github-deploy-token.yaml
+
+namespace: hosted
