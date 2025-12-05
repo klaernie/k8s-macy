@@ -1,6 +1,7 @@
 resources:
   - _cert-manager
   - _external-dns
+  - _ingress-nginx
   - _kilo
   - _reloader
   - _sops
