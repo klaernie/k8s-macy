@@ -29,8 +29,7 @@ spec:
             name: copy-and-merge-config-script
             subPath: copy-and-merge-config.sh
           - mountPath: /data
-            name: disco-pv
-            subPath: disco
+            name: data
           - mountPath: /cm/config.yaml
             name: disco-cm
             subPath: config.yaml
@@ -52,16 +51,14 @@ spec:
         terminationMessagePolicy: File
         volumeMounts:
         - mountPath: /data
-          name: disco-pv
-          subPath: disco
+          name: data
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
       terminationGracePeriodSeconds: 10
       volumes:
-      - name: disco-pv
-        persistentVolumeClaim:
-          claimName: disco-storage
+      - name: data
+        emptyDir:
       - name: disco-cm
         configMap:
           name: disco-bridge

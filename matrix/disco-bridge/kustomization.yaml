@@ -1,5 +1,4 @@
 resources:
-  - 004_pvc.yaml
   - 005_deployment.yaml
   - 006_svc.yaml
 
