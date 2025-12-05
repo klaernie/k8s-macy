@@ -1,0 +1,4 @@
+resources:
+  - https://raw.githubusercontent.com/squat/kilo/main/manifests/crds.yaml
+  - https://raw.githubusercontent.com/squat/kilo/main/manifests/kilo-k3s-flannel.yaml
+  - peer-fw1.yaml

@@ -1,0 +1,10 @@
+resources:
+  - _cert-manager
+  - _external-dns
+  - _kilo
+  - _reloader
+  - _sops
+  - bolcz
+  - hosted
+  - matrix
+  - trilium
