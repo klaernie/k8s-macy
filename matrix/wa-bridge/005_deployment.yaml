@@ -22,7 +22,7 @@ spec:
       name: wa-bridge
     spec:
       initContainers:
-        - image: dock.mau.dev/mautrix/whatsapp:v0.12.5
+        - image: dock.mau.dev/mautrix/whatsapp:v25.11
           name: copy-config
           volumeMounts:
           - mountPath: /copy-and-merge-config.sh
@@ -42,7 +42,7 @@ spec:
           command:
             - /copy-and-merge-config.sh
       containers:
-      - image: dock.mau.dev/mautrix/whatsapp:v0.12.5
+      - image: dock.mau.dev/mautrix/whatsapp:v25.11
         imagePullPolicy: Always
         name: wa-bridge
         securityContext:
