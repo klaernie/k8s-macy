@@ -3,7 +3,6 @@ resources:
   - 001_pvc_postgres.yaml
   - 004_postgres_deployment.yaml
   - 005_postgres_svc.yaml
-  - 009_postgres_ext_svc.yaml
   - matrix-config
   - 014_pvc.yaml
   - 015_deployment.yaml
