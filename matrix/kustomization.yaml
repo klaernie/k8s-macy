@@ -13,6 +13,7 @@ resources:
   - gc-bridge
   - disco-bridge
   - insta-bridge
+  - wa-bridge
 
 configMapGenerator:
   - name: copy-and-merge-config-script

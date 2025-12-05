@@ -1,0 +1,10 @@
+resources:
+  - 005_deployment.yaml
+  - 006_svc.yaml
+
+configMapGenerator:
+  - name: wa-bridge
+    files:
+      - config/config.yaml
+    options:
+      disableNameSuffixHash: true
