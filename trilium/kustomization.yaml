@@ -12,8 +12,8 @@ helmCharts:
   valuesInline:
     replicaCount: 1
     image:
-      repository: zadam/trilium
-      tag: "0.63.7"
+      repository: ghcr.io/triliumnext/trilium
+      tag: "v0.100.0"
       pullPolicy: IfNotPresent
 
     imagePullSecrets: []
