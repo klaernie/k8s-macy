@@ -7,5 +7,6 @@ resources:
   - _sops
   - bolcz
   - hosted
+  - http-status
   - matrix
   - trilium
