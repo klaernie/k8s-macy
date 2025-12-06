@@ -112,6 +112,11 @@ patches:
 - patch: |-
     - op: remove
       path: /spec/template/spec/containers/0/securityContext
+    - op: add
+      path: "/spec/template/spec/containers/0/env/-"
+      value:
+        name: TRILIUM_NETWORK_TRUSTEDREVERSEPROXY
+        value: "uniquelocal"
   target:
     group: apps
     version: v1
