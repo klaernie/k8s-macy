@@ -31,7 +31,7 @@ spec:
           value: /config/homeserver.yaml
         - name: SYNAPSE_REPORT_STATS
           value: yes
-        image: ghcr.io/element-hq/synapse:v1.142.1
+        image: ghcr.io/element-hq/synapse:v1.143.0
         args:
           - run
           - -m
