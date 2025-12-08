@@ -1,0 +1,15 @@
+# https://velero.io/docs/v1.17/resource-filtering/#creating-resource-policies
+version: v1
+volumePolicies:
+  - conditions:
+      volumeTypes:
+        # there is no point in backing up volumes that are generated at pod start
+        - emptyDir
+        - downwardAPI
+        # these are always stored in git or auto-generated
+        - configmap
+        - secret
+        # these literally have an OCI registry backing it
+        - image
+    action:
+      type: skip

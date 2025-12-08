@@ -1,0 +1,54 @@
+resources:
+  - namespace.yaml
+  - secrets.enc.yaml
+
+namespace: velero
+
+helmCharts:
+  - name: velero
+    repo: https://vmware-tanzu.github.io/helm-charts
+    releaseName: velero
+    namespace: velero
+    version: 11.2.0
+    skipTests: true
+    valuesInline:
+      snapshotsEnabled: false
+      deployNodeAgent: true
+      credentials:
+        useSecret: true
+        existingSecret: s3-ak-online-backups-creds
+      initContainers:
+        - name: velero-plugin-for-aws
+          image: velero/velero-plugin-for-aws:latest
+          volumeMounts:
+            - mountPath: /target
+              name: plugins
+      configuration:
+        backupStorageLocation:
+          - name: ak-online-backups
+            provider: aws
+            bucket: ak-online-backup
+            prefix: macy/velero
+            default: true
+            #credential:
+              #key: cloud
+              #name: s3-ak-online-backup-creds
+            config:
+              region: nbg1
+              s3Url: https://nbg1.your-objectstorage.com
+      schedules:
+        thricedaily:
+          schedule: '0 0/8 * * *'
+          skipImmediately: false
+          template:
+            defaultVolumesToFsBackup: true
+            resourcePolicy:
+              kind: configmap
+              name: resource-policy
+
+configMapGenerator:
+  - name: resource-policy
+    files:
+      - resource-policy.yaml
+    options:
+      disableNameSuffixHash: true
