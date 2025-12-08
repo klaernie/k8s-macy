@@ -80,7 +80,6 @@ spec:
           subPath: registration.yaml
         - mountPath: /data
           name: matrix-pv
-          subPath: matrix
       - name: postfix-sidecar
         image: juanluisbaptiste/postfix:latest
         imagePullPolicy: Always
@@ -111,7 +110,7 @@ spec:
           secretName: matrix-homeserver
       - name: matrix-pv
         persistentVolumeClaim:
-          claimName: matrix-storage
+          claimName: synapse
       - name: matrix-cm
         configMap:
           name: matrix
