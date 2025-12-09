@@ -45,6 +45,9 @@ spec:
       - image: dock.mau.dev/mautrix/whatsapp:v25.11
         imagePullPolicy: Always
         name: wa-bridge
+        env:
+          - name: PGSSLMODE
+            value: disable
         securityContext:
           privileged: true
         terminationMessagePath: /dev/termination-log

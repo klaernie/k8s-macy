@@ -45,6 +45,9 @@ spec:
       - image: dock.mau.dev/mautrix/discord:latest
         imagePullPolicy: Always
         name: disco-bridge
+        env:
+          - name: PGSSLMODE
+            value: disable
         securityContext:
           privileged: true
         terminationMessagePath: /dev/termination-log

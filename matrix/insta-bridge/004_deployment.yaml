@@ -25,6 +25,9 @@ spec:
         - image: dock.mau.dev/mautrix/meta:latest
           imagePullPolicy: Always
           name: insta-bridge
+          env:
+            - name: PGSSLMODE
+              value: disable
           envFrom:
             - secretRef:
                 name: insta-bridge
