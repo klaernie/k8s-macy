@@ -1,14 +1,17 @@
 resources:
-  - 000_ns.yaml
-  - 001_pvc_postgres.yaml
-  - 004_postgres_deployment.yaml
-  - 005_postgres_svc.yaml
-  - matrix-config
-  - 014_pvc.yaml
-  - 015_deployment.yaml
-  - 017_svc_synapse.yaml
-  - 018_ingress.yaml
+  - namespace-matrix.yaml
   - secrets.enc.yaml
+
+  - pvc-postgres.yaml
+  - deployment-postgres.yaml
+  - service-postgres-13.yaml
+
+  - pvc-synapse.yaml
+  - matrix-config
+  - deployment-matrix.yaml
+  - service-synapse.yaml
+  - ingress-matrix.yaml
+
   - gc-bridge
   - disco-bridge
   - insta-bridge
