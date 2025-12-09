@@ -24,102 +24,102 @@ spec:
       name: matrix
     spec:
       containers:
-      - env:
-        - name: SYNAPSE_CONFIG_DIR
-          value: /config
-        - name: SYNAPSE_CONFIG_PATH
-          value: /config/homeserver.yaml
-        - name: SYNAPSE_REPORT_STATS
-          value: yes
-        - name: PGPASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: matrix-homeserver
-              key: dbpass
-        image: ghcr.io/element-hq/synapse:v1.142.1
-        args:
-          - run
-          - -m
-          - synapse.app.homeserver
-          - --config-path
-          - /config/conf.d/
-        imagePullPolicy: Always
-        name: synapse
-        securityContext:
-          privileged: true
-        terminationMessagePath: /dev/termination-log
-        terminationMessagePolicy: File
-        volumeMounts:
-        - mountPath: /config/conf.d/homeserver.yaml
-          name: matrix-cm
-          subPath: homeserver.yaml
-        - mountPath: /config/conf.d/secrets.yaml
-          name: matrix-homeserver-secrets
-          subPath: secrets.yaml
-        - mountPath: /config/oidc-client-secret
-          name: matrix-homeserver-secrets
-          subPath: oidc-client-secret
-        - mountPath: /config/ak-online.be.signing.key
-          name: matrix-homeserver-secrets
-          subPath: ak-online.be.signing.key
-        - mountPath: /config/as-doublepuppet.yaml
-          name: matrix-homeserver-secrets
-          subPath: doublepuppet.yaml
-        - mountPath: /config/ak-online.be.log.config
-          name: matrix-cm
-          subPath: ak-online.be.log.config
-        - mountPath: /config/oembed-providers.json
-          name: matrix-cm
-          subPath: oembed-providers.json
-        - mountPath: /config/as-disco-bridge.yaml
-          name: disco-bridge
-          subPath: registration.yaml
-        - mountPath: /config/as-wa-bridge.yaml
-          name: wa-bridge
-          subPath: registration.yaml
-        - mountPath: /config/as-gc-bridge.yaml
-          name: gc-bridge
-          subPath: registration.yaml
-        - mountPath: /config/as-instabridge.yaml
-          name: insta-bridge
-          subPath: registration.yaml
-        - mountPath: /data
-          name: matrix-pv
-      - name: postfix-sidecar
-        image: juanluisbaptiste/postfix:latest
-        imagePullPolicy: Always
-        env:
-          - name: LOG_SUBJECT
-            value: 'yes'
-        envFrom:
-          - secretRef:
-              name: postfix-config
+        - env:
+            - name: SYNAPSE_CONFIG_DIR
+              value: /config
+            - name: SYNAPSE_CONFIG_PATH
+              value: /config/homeserver.yaml
+            - name: SYNAPSE_REPORT_STATS
+              value: yes
+            - name: PGPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: matrix-homeserver
+                  key: dbpass
+          image: ghcr.io/element-hq/synapse:v1.142.1
+          args:
+            - run
+            - -m
+            - synapse.app.homeserver
+            - --config-path
+            - /config/conf.d/
+          imagePullPolicy: Always
+          name: synapse
+          securityContext:
+            privileged: true
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+            - mountPath: /config/conf.d/homeserver.yaml
+              name: matrix-cm
+              subPath: homeserver.yaml
+            - mountPath: /config/conf.d/secrets.yaml
+              name: matrix-homeserver-secrets
+              subPath: secrets.yaml
+            - mountPath: /config/oidc-client-secret
+              name: matrix-homeserver-secrets
+              subPath: oidc-client-secret
+            - mountPath: /config/ak-online.be.signing.key
+              name: matrix-homeserver-secrets
+              subPath: ak-online.be.signing.key
+            - mountPath: /config/as-doublepuppet.yaml
+              name: matrix-homeserver-secrets
+              subPath: doublepuppet.yaml
+            - mountPath: /config/ak-online.be.log.config
+              name: matrix-cm
+              subPath: ak-online.be.log.config
+            - mountPath: /config/oembed-providers.json
+              name: matrix-cm
+              subPath: oembed-providers.json
+            - mountPath: /config/as-disco-bridge.yaml
+              name: disco-bridge
+              subPath: registration.yaml
+            - mountPath: /config/as-wa-bridge.yaml
+              name: wa-bridge
+              subPath: registration.yaml
+            - mountPath: /config/as-gc-bridge.yaml
+              name: gc-bridge
+              subPath: registration.yaml
+            - mountPath: /config/as-instabridge.yaml
+              name: insta-bridge
+              subPath: registration.yaml
+            - mountPath: /data
+              name: matrix-pv
+        - name: postfix-sidecar
+          image: juanluisbaptiste/postfix:latest
+          imagePullPolicy: Always
+          env:
+            - name: LOG_SUBJECT
+              value: "yes"
+          envFrom:
+            - secretRef:
+                name: postfix-config
 
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
       terminationGracePeriodSeconds: 10
       volumes:
-      - name: matrix-homeserver-secrets
-        secret:
-          defaultMode: 420
-          secretName: matrix-homeserver
-      - name: matrix-pv
-        persistentVolumeClaim:
-          claimName: synapse
-      - name: matrix-cm
-        configMap:
-          name: matrix
-          defaultMode: 420
-      - name: disco-bridge
-        secret:
-          secretName: as-disco-bridge
-      - name: wa-bridge
-        secret:
-          secretName: as-wa-bridge
-      - name: gc-bridge
-        secret:
-          secretName: as-gc-bridge
-      - name: insta-bridge
-        secret:
-          secretName: as-insta-bridge
+        - name: matrix-homeserver-secrets
+          secret:
+            defaultMode: 420
+            secretName: matrix-homeserver
+        - name: matrix-pv
+          persistentVolumeClaim:
+            claimName: synapse
+        - name: matrix-cm
+          configMap:
+            name: matrix
+            defaultMode: 420
+        - name: disco-bridge
+          secret:
+            secretName: as-disco-bridge
+        - name: wa-bridge
+          secret:
+            secretName: as-wa-bridge
+        - name: gc-bridge
+          secret:
+            secretName: as-gc-bridge
+        - name: insta-bridge
+          secret:
+            secretName: as-insta-bridge

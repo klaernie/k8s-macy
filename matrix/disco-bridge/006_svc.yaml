@@ -7,10 +7,10 @@ metadata:
   namespace: matrix
 spec:
   ports:
-  - name: disco-bridge
-    port: 29334
-    protocol: TCP
-    targetPort: 29334
+    - name: disco-bridge
+      port: 29334
+      protocol: TCP
+      targetPort: 29334
   selector:
     k8s-app: disco-bridge
   sessionAffinity: None

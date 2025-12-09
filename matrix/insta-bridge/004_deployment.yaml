@@ -58,4 +58,3 @@ spec:
         - name: as
           secret:
             secretName: as-insta-bridge
-

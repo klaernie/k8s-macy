@@ -7,10 +7,10 @@ metadata:
   namespace: matrix
 spec:
   ports:
-  - name: wa-bridge
-    port: 29318
-    protocol: TCP
-    targetPort: 29318
+    - name: wa-bridge
+      port: 29318
+      protocol: TCP
+      targetPort: 29318
   selector:
     k8s-app: wa-bridge
   sessionAffinity: None

@@ -25,26 +25,26 @@ spec:
       name: postgres
     spec:
       containers:
-      - env:
-          - name: POSTGRES_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                key: pgpass
-                name: postgres-password
-          - name: POSTGRES_USER
-            value: postgres
-          - name: PGDATA
-            value: /var/lib/postgresql/data/pgdata
-        image: postgres:13
-        imagePullPolicy: Always
-        name: postgres
-        securityContext:
-          privileged: false
-        terminationMessagePath: /dev/termination-log
-        terminationMessagePolicy: File
-        volumeMounts:
-          - mountPath: /var/lib/postgresql/data
-            name: postgresdata
+        - env:
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: pgpass
+                  name: postgres-password
+            - name: POSTGRES_USER
+              value: postgres
+            - name: PGDATA
+              value: /var/lib/postgresql/data/pgdata
+          image: postgres:13
+          imagePullPolicy: Always
+          name: postgres
+          securityContext:
+            privileged: false
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: postgresdata
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
