@@ -25,50 +25,50 @@ spec:
         - image: dock.mau.dev/mautrix/whatsapp:v25.11
           name: copy-config
           volumeMounts:
-          - mountPath: /copy-and-merge-config.sh
-            name: copy-and-merge-config-script
-            subPath: copy-and-merge-config.sh
-          - mountPath: /data
-            name: data
-          - mountPath: /cm/config.yaml
-            name: wa-cm
-            subPath: config.yaml
-          - mountPath: /cm/registration.yaml
-            name: as
-            subPath: registration.yaml
+            - mountPath: /copy-and-merge-config.sh
+              name: copy-and-merge-config-script
+              subPath: copy-and-merge-config.sh
+            - mountPath: /data
+              name: data
+            - mountPath: /cm/config.yaml
+              name: wa-cm
+              subPath: config.yaml
+            - mountPath: /cm/registration.yaml
+              name: as
+              subPath: registration.yaml
           command:
             - /copy-and-merge-config.sh
       containers:
-      - image: dock.mau.dev/mautrix/whatsapp:latest
-        imagePullPolicy: Always
-        name: wa-bridge
-        env:
-          - name: PGSSLMODE
-            value: disable
-        envFrom:
-          - secretRef:
-              name: wa-bridge
-        securityContext:
-          privileged: true
-        terminationMessagePath: /dev/termination-log
-        terminationMessagePolicy: File
-        volumeMounts:
-        - mountPath: /data
-          name: data
+        - image: dock.mau.dev/mautrix/whatsapp:latest
+          imagePullPolicy: Always
+          name: wa-bridge
+          env:
+            - name: PGSSLMODE
+              value: disable
+          envFrom:
+            - secretRef:
+                name: wa-bridge
+          securityContext:
+            privileged: true
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+            - mountPath: /data
+              name: data
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
       terminationGracePeriodSeconds: 10
       volumes:
-      - name: data
-        emptyDir:
-      - name: wa-cm
-        configMap:
-          name: wa-bridge
-      - name: as
-        secret:
-          secretName: as-wa-bridge
-      - name: copy-and-merge-config-script
-        configMap:
-          name: copy-and-merge-config-script
-          defaultMode: 0o530
+        - name: data
+          emptyDir:
+        - name: wa-cm
+          configMap:
+            name: wa-bridge
+        - name: as
+          secret:
+            secretName: as-wa-bridge
+        - name: copy-and-merge-config-script
+          configMap:
+            name: copy-and-merge-config-script
+            defaultMode: 0o530

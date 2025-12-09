@@ -7,10 +7,10 @@ metadata:
   namespace: matrix
 spec:
   ports:
-  - name: postgres
-    port: 5432
-    protocol: TCP
-    targetPort: 5432
+    - name: postgres
+      port: 5432
+      protocol: TCP
+      targetPort: 5432
   selector:
     k8s-app: postgres
     version: pg13

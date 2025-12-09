@@ -22,43 +22,43 @@ spec:
       name: gc-bridge
     spec:
       containers:
-      - image: dock.mau.dev/mautrix/googlechat:latest
-        imagePullPolicy: Always
-        name: gc-bridge
-        envFrom:
-          - secretRef:
-              name: gc-bridge
-        securityContext:
-          privileged: true
-        terminationMessagePath: /dev/termination-log
-        terminationMessagePolicy: File
-        volumeMounts:
-        - mountPath: /data
-          name: data
-        - mountPath: /data/config.yaml
-          name: gc-cm
-          subPath: config.yaml
-        - mountPath: /data/registration.yaml
-          name: as-gc-bridge
-          subPath: registration.yaml
+        - image: dock.mau.dev/mautrix/googlechat:latest
+          imagePullPolicy: Always
+          name: gc-bridge
+          envFrom:
+            - secretRef:
+                name: gc-bridge
+          securityContext:
+            privileged: true
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+            - mountPath: /data
+              name: data
+            - mountPath: /data/config.yaml
+              name: gc-cm
+              subPath: config.yaml
+            - mountPath: /data/registration.yaml
+              name: as-gc-bridge
+              subPath: registration.yaml
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
       terminationGracePeriodSeconds: 10
       volumes:
-      - name: data
-        emptyDir:
-      - name: gc-cm
-        configMap:
-          name: gc-bridge
-          defaultMode: 420
-          items:
-          - key: config.yaml
-            path: config.yaml
-      - name: as-gc-bridge
-        secret:
-          secretName: as-gc-bridge
-          defaultMode: 420
-          items:
-          - key: registration.yaml
-            path: registration.yaml
+        - name: data
+          emptyDir:
+        - name: gc-cm
+          configMap:
+            name: gc-bridge
+            defaultMode: 420
+            items:
+              - key: config.yaml
+                path: config.yaml
+        - name: as-gc-bridge
+          secret:
+            secretName: as-gc-bridge
+            defaultMode: 420
+            items:
+              - key: registration.yaml
+                path: registration.yaml

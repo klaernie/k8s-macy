@@ -7,10 +7,10 @@ metadata:
   namespace: matrix
 spec:
   ports:
-  - name: gc-bridge
-    port: 29320
-    protocol: TCP
-    targetPort: 29320
+    - name: gc-bridge
+      port: 29320
+      protocol: TCP
+      targetPort: 29320
   selector:
     k8s-app: gc-bridge
   sessionAffinity: None

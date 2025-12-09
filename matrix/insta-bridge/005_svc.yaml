@@ -5,10 +5,10 @@ metadata:
   namespace: matrix
 spec:
   ports:
-  - name: insta-bridge
-    port: 29319
-    protocol: TCP
-    targetPort: 29319
+    - name: insta-bridge
+      port: 29319
+      protocol: TCP
+      targetPort: 29319
   selector:
     k8s-app: insta-bridge
   sessionAffinity: None
