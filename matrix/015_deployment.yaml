@@ -31,6 +31,11 @@ spec:
           value: /config/homeserver.yaml
         - name: SYNAPSE_REPORT_STATS
           value: yes
+        - name: PGPASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: matrix-homeserver
+              key: dbpass
         image: ghcr.io/element-hq/synapse:v1.142.1
         args:
           - run
