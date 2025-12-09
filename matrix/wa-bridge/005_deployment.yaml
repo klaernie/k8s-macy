@@ -33,21 +33,21 @@ spec:
           - mountPath: /cm/config.yaml
             name: wa-cm
             subPath: config.yaml
-          - mountPath: /cm/secrets.yaml
-            name: secrets
-            subPath: secrets.yaml
           - mountPath: /cm/registration.yaml
             name: as
             subPath: registration.yaml
           command:
             - /copy-and-merge-config.sh
       containers:
-      - image: dock.mau.dev/mautrix/whatsapp:v25.11
+      - image: dock.mau.dev/mautrix/whatsapp:latest
         imagePullPolicy: Always
         name: wa-bridge
         env:
           - name: PGSSLMODE
             value: disable
+        envFrom:
+          - secretRef:
+              name: wa-bridge
         securityContext:
           privileged: true
         terminationMessagePath: /dev/termination-log
@@ -68,9 +68,6 @@ spec:
       - name: as
         secret:
           secretName: as-wa-bridge
-      - name: secrets
-        secret:
-          secretName: wa-bridge
       - name: copy-and-merge-config-script
         configMap:
           name: copy-and-merge-config-script

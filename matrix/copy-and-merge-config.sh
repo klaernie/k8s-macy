@@ -6,4 +6,6 @@ test -d /cm
 test -d /data
 
 cp /cm/registration.yaml /data/
-yq eval-all '. as $item ireduce ({}; . * $item )' /cm/config.yaml /cm/secrets.yaml >/data/config.yaml
+SECRETS_FILE=
+test -f /cm/secrets.yaml && SECRETS_FILE=/cm/secrets.yaml
+yq eval-all '. as $item ireduce ({}; . * $item )' /cm/config.yaml $SECRETS_FILE >/data/config.yaml
