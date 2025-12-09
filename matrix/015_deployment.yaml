@@ -103,15 +103,6 @@ spec:
       - name: matrix-homeserver-secrets
         secret:
           defaultMode: 420
-          items:
-          - key: secrets.yaml
-            path: secrets.yaml
-          - key: oidc-client-secret
-            path: oidc-client-secret
-          - key: ak-online.be.signing.key
-            path: ak-online.be.signing.key
-          - key: doublepuppet.yaml
-            path: doublepuppet.yaml
           secretName: matrix-homeserver
       - name: matrix-pv
         persistentVolumeClaim:
@@ -120,13 +111,6 @@ spec:
         configMap:
           name: matrix
           defaultMode: 420
-          items:
-          - key: homeserver.yaml
-            path: homeserver.yaml
-          - key: ak-online.be.log.config
-            path: ak-online.be.log.config
-          - key: oembed-providers.json
-            path: oembed-providers.json
       - name: disco-bridge
         secret:
           secretName: as-disco-bridge
