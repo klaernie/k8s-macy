@@ -1,6 +1,6 @@
 resources:
-  - 004_deployment.yaml
-  - 005_svc.yaml
+  - deployment.yaml
+  - svc.yaml
 
 configMapGenerator:
   - name: insta-bridge

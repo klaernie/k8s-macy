@@ -1,6 +1,6 @@
 resources:
-  - 005_deployment.yaml
-  - 006_svc.yaml
+  - deployment.yaml
+  - svc.yaml
 
 configMapGenerator:
   - name: disco-bridge
