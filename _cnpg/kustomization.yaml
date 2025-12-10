@@ -1,0 +1,12 @@
+resources:
+  - namespace-cnpg-system.yaml
+  - https://github.com/cloudnative-pg/plugin-barman-cloud/releases/download/v0.9.0/manifest.yaml
+
+helmCharts:
+  - releaseName: cloudnative-pg
+    repo: https://cloudnative-pg.github.io/charts
+    name: cloudnative-pg
+    version: 0.27.0
+    skipTests: true
+
+namespace: cnpg-system
