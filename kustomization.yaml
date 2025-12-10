@@ -6,6 +6,7 @@ resources:
   - _kilo
   - _reloader
   - _sops
+  - _velero
   - bolcz
   - hosted
   - http-status
