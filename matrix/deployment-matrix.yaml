@@ -36,7 +36,7 @@ spec:
                 secretKeyRef:
                   name: pg-synapse-app
                   key: password
-          image: ghcr.io/element-hq/synapse:v1.142.1
+          image: ghcr.io/element-hq/synapse:v1.144.0
           args:
             - run
             - -m
