@@ -2,9 +2,11 @@ resources:
   - namespace-matrix.yaml
   - secrets.enc.yaml
 
-  - pvc-postgres.yaml
-  - deployment-postgres.yaml
-  - service-postgres-13.yaml
+  - cluster-pg-synapse.yaml
+  - cluster-pg-disco-bridge.yaml
+  - cluster-pg-gc-bridge.yaml
+  - cluster-pg-insta-bridge.yaml
+  - cluster-pg-wa-bridge.yaml
 
   - pvc-synapse.yaml
   - matrix-config

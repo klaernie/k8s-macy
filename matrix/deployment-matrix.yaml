@@ -34,8 +34,8 @@ spec:
             - name: PGPASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: matrix-homeserver
-                  key: dbpass
+                  name: pg-synapse-app
+                  key: password
           image: ghcr.io/element-hq/synapse:v1.142.1
           args:
             - run

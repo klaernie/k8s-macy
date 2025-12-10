@@ -25,6 +25,12 @@ spec:
         - image: dock.mau.dev/mautrix/googlechat:latest
           imagePullPolicy: Always
           name: gc-bridge
+          env:
+            - name: MAUTRIX_GOOGLECHAT_APPSERVICE_DATABASE
+              valueFrom:
+                secretKeyRef:
+                  name: pg-gc-bridge-app
+                  key: uri
           envFrom:
             - secretRef:
                 name: gc-bridge

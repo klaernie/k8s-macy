@@ -45,6 +45,11 @@ spec:
           env:
             - name: PGSSLMODE
               value: disable
+            - name: MAUTRIX_database.uri
+              valueFrom:
+                secretKeyRef:
+                  name: pg-wa-bridge-app
+                  key: uri
           envFrom:
             - secretRef:
                 name: wa-bridge

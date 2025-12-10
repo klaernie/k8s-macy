@@ -28,6 +28,11 @@ spec:
           env:
             - name: PGSSLMODE
               value: disable
+            - name: MAUTRIX_database.uri
+              valueFrom:
+                secretKeyRef:
+                  name: pg-insta-bridge-app
+                  key: uri
           envFrom:
             - secretRef:
                 name: insta-bridge

@@ -18,7 +18,7 @@ database:
   name: psycopg2
   txn_limit: 10000
   args:
-    host: postgres-13.matrix.svc.cluster.local
+    host: pg-synapse-rw
     database: synapse
     user: synapse
     port: 5432
