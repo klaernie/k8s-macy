@@ -2,6 +2,8 @@ resources:
   - namespace-matrix.yaml
   - secrets.enc.yaml
 
+  - db-backup-store.yaml
+
   - cluster-pg-synapse.yaml
   - cluster-pg-disco-bridge.yaml
   - cluster-pg-gc-bridge.yaml
