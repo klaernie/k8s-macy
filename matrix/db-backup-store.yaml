@@ -1,0 +1,19 @@
+apiVersion: barmancloud.cnpg.io/v1
+kind: ObjectStore
+metadata:
+  name: hetzner
+  namespace: matrix
+spec:
+  configuration:
+    destinationPath: s3://macy/cnpg/matrix
+    endpointURL: https://ak-online-backup.nbg1.your-objectstorage.com
+    s3Credentials:
+      accessKeyId:
+        name: s3
+        key: ACCESS_KEY_ID
+      secretAccessKey:
+        name: s3
+        key: ACCESS_SECRET_KEY
+    wal:
+      compression: gzip
+  retentionPolicy: 10d

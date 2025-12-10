@@ -8,6 +8,12 @@ resources:
   - cluster-pg-insta-bridge.yaml
   - cluster-pg-wa-bridge.yaml
 
+  - db-scheduledbackup-synapse.yaml
+  - db-scheduledbackup-disco-bridge.yaml
+  - db-scheduledbackup-gc-bridge.yaml
+  - db-scheduledbackup-insta-bridge.yaml
+  - db-scheduledbackup-wa-bridge.yaml
+
   - pvc-synapse.yaml
   - matrix-config
   - deployment-matrix.yaml
