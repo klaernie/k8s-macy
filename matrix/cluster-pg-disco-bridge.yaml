@@ -1,0 +1,29 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: pg-disco-bridge
+  namespace: matrix
+spec:
+  instances: 1
+  bootstrap:
+    initdb:
+      owner: disco-bridge
+      database: disco-bridge
+      import:
+        type: microservice
+        databases:
+          - disco-bridge
+        source:
+          externalCluster: pg13
+  storage:
+    size: 5Gi
+  externalClusters:
+    - name: pg13
+      connectionParameters:
+        host: postgres-13
+        user: postgres
+        dbname: postgres
+        sslmode: disable
+      password:
+        name: postgres-password
+        key: pgpass

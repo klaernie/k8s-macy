@@ -1,0 +1,29 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: pg-insta-bridge
+  namespace: matrix
+spec:
+  instances: 1
+  bootstrap:
+    initdb:
+      owner: insta-bridge
+      database: insta-bridge
+      import:
+        type: microservice
+        databases:
+          - insta-bridge
+        source:
+          externalCluster: pg13
+  storage:
+    size: 5Gi
+  externalClusters:
+    - name: pg13
+      connectionParameters:
+        host: postgres-13
+        user: postgres
+        dbname: postgres
+        sslmode: disable
+      password:
+        name: postgres-password
+        key: pgpass

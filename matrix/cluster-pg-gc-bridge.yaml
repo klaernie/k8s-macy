@@ -1,0 +1,29 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: pg-gc-bridge
+  namespace: matrix
+spec:
+  instances: 1
+  bootstrap:
+    initdb:
+      owner: gc-bridge
+      database: gc-bridge
+      import:
+        type: microservice
+        databases:
+          - gc-bridge
+        source:
+          externalCluster: pg13
+  storage:
+    size: 5Gi
+  externalClusters:
+    - name: pg13
+      connectionParameters:
+        host: postgres-13
+        user: postgres
+        dbname: postgres
+        sslmode: disable
+      password:
+        name: postgres-password
+        key: pgpass
