@@ -35,7 +35,7 @@ spec:
               value: postgres
             - name: PGDATA
               value: /var/lib/postgresql/data/pgdata
-          image: postgres:13
+          image: postgres:18
           imagePullPolicy: Always
           name: postgres
           securityContext:
