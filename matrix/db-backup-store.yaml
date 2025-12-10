@@ -5,8 +5,8 @@ metadata:
   namespace: matrix
 spec:
   configuration:
-    destinationPath: s3://macy/cnpg/matrix
-    endpointURL: https://ak-online-backup.nbg1.your-objectstorage.com
+    destinationPath: s3://ak-online-backup/macy/cnpg/matrix
+    endpointURL: https://nbg1.your-objectstorage.com
     s3Credentials:
       accessKeyId:
         name: s3
