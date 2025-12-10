@@ -1,0 +1,16 @@
+apiVersion: kilo.squat.ai/v1alpha1
+kind: Peer
+metadata:
+  name: fw1
+  namespace: kube-system
+spec:
+  allowedIPs:
+  - 10.4.0.2/32
+  - 172.16.42.0/24
+  - 172.16.0.0/22
+  publicKey: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  persistentKeepalive: 10
+  endpoint:
+    dnsOrIP:
+      dns: vpn.ak-online.be
+    port: 55280
