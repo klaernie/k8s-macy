@@ -30,7 +30,7 @@ spec:
             - name: SYNAPSE_CONFIG_PATH
               value: /config/homeserver.yaml
             - name: SYNAPSE_REPORT_STATS
-              value: yes
+              value: "yes"
             - name: PGPASSWORD
               valueFrom:
                 secretKeyRef:
