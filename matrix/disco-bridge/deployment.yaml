@@ -30,6 +30,11 @@ spec:
                 secretKeyRef:
                   name: pg-disco-bridge-app
                   key: uri
+            - name: PUPPETTOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: matrix-homeserver
+                  key: puppettoken
           volumeMounts:
             - mountPath: /copy-and-merge-config.sh
               name: copy-and-merge-config-script

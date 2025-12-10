@@ -33,6 +33,11 @@ spec:
                 secretKeyRef:
                   name: pg-insta-bridge-app
                   key: uri
+            - name: MAUTRIX_double_puppet.secrets.ak-online.be
+              valueFrom:
+                secretKeyRef:
+                  name: matrix-homeserver
+                  key: puppettoken
           envFrom:
             - secretRef:
                 name: insta-bridge

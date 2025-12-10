@@ -50,6 +50,11 @@ spec:
                 secretKeyRef:
                   name: pg-wa-bridge-app
                   key: uri
+            - name: MAUTRIX_double_puppet.secrets.ak-online.be
+              valueFrom:
+                secretKeyRef:
+                  name: matrix-homeserver
+                  key: puppettoken
           envFrom:
             - secretRef:
                 name: wa-bridge

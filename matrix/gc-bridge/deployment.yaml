@@ -31,6 +31,11 @@ spec:
                 secretKeyRef:
                   name: pg-gc-bridge-app
                   key: uri
+            - name: PUPPETTOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: matrix-homeserver
+                  key: puppettoken
           envFrom:
             - secretRef:
                 name: gc-bridge
