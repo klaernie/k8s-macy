@@ -15,10 +15,11 @@ network:
   proxy_only_login: false
 
   # Displayname template for WhatsApp users.
-  # {{.PushName}}     - nickname set by the WhatsApp user
-  # {{.BusinessName}} - validated WhatsApp business name
-  # {{.Phone}}        - phone number (international format)
-  # {{.FullName}}     - Name you set in the contacts list
+  # {{.PushName}}      - nickname set by the WhatsApp user
+  # {{.BusinessName}}  - validated WhatsApp business name
+  # {{.Phone}}         - phone number (international format)
+  # {{.RedactedPhone}} - phone number with middle digits replaced by "∙"
+  # {{.FullName}}      - Name you set in the contacts list
   displayname_template: "{{if .BusinessName}}{{.BusinessName}}{{else if .PushName}}{{.PushName}}{{else}}{{.JID}}{{end}} (WA)"
 
   # Should incoming calls send a message to the Matrix room?
@@ -134,6 +135,7 @@ bridge:
   # By default, users who are in the same group on the remote network will be
   # in the same Matrix room bridged to that group. If this is set to true,
   # every user will get their own Matrix room instead.
+  # SETTING THIS IS IRREVERSIBLE AND POTENTIALLY DESTRUCTIVE IF PORTALS ALREADY EXIST.
   split_portals: false
   # Should the bridge resend `m.bridge` events to all portals on startup?
   resend_bridge_info: false
@@ -165,6 +167,11 @@ bridge:
   # Should cross-room reply metadata be bridged?
   # Most Matrix clients don't support this and servers may reject such messages too.
   cross_room_replies: false
+  # If a state event fails to bridge, should the bridge revert any state changes made by that event?
+  revert_failed_state_changes: false
+  # In portals with no relay set, should Matrix users be kicked if they're
+  # not logged into an account that's in the remote chat?
+  kick_matrix_users: true
 
   # What should be done to portal rooms when a user logs out or is logged out?
   # Permitted values:
@@ -366,10 +373,8 @@ analytics:
 
 # Settings for provisioning API
 provisioning:
-  # Prefix for the provisioning API paths.
-  prefix: /_matrix/provision
   # Shared secret for authentication. If set to "generate" or null, a random secret will be generated,
-  # or if set to "disable", the provisioning API will be disabled.
+  # or if set to "disable", the provisioning API will be disabled. Must be at least 16 characters.
   shared_secret: disable
   # Whether to allow provisioning API requests to be authed using Matrix access tokens.
   # This follows the same rules as double puppeting to determine which server to contact to check the token,
@@ -395,6 +400,14 @@ public_media:
   expiry: 0
   # Length of hash to use for public media URLs. Must be between 0 and 32.
   hash_length: 32
+  # The path prefix for generated URLs. Note that this will NOT change the path where media is actually served.
+  # If you change this, you must configure your reverse proxy to rewrite the path accordingly.
+  path_prefix: /_mautrix/publicmedia
+  # Should the bridge store media metadata in the database in order to support encrypted media and generate shorter URLs?
+  # If false, the generated URLs will just have the MXC URI and a HMAC signature.
+  # The hash_length field will be used to decide the length of the generated URL.
+  # This also allows invalidating URLs by deleting the database entry.
+  use_database: false
 
 # Settings for converting remote media to custom mxc:// URIs instead of reuploading.
 # More details can be found at https://docs.mau.fi/bridges/go/discord/direct-media.html
