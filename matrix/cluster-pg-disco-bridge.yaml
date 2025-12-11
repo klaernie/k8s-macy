@@ -11,6 +11,8 @@ spec:
     #   database: disco-bridge
     recovery:
       source: origin
+      owner: disco-bridge
+      database: disco-bridge
 
   plugins:
     - name: barman-cloud.cloudnative-pg.io

@@ -11,6 +11,8 @@ spec:
     #   database: insta-bridge
     recovery:
       source: origin
+      owner: insta-bridge
+      database: insta-bridge
 
   plugins:
     - name: barman-cloud.cloudnative-pg.io

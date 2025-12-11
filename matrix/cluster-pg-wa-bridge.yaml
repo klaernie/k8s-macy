@@ -11,6 +11,8 @@ spec:
     #   database: wa-bridge
     recovery:
       source: origin
+      owner: wa-bridge
+      database: wa-bridge
 
   plugins:
     - name: barman-cloud.cloudnative-pg.io

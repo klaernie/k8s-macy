@@ -11,6 +11,8 @@ spec:
     #   database: synapse
     recovery:
       source: origin
+      owner: synapse
+      database: synapse
 
   plugins:
     - name: barman-cloud.cloudnative-pg.io
