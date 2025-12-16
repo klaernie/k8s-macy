@@ -1,4 +1,6 @@
 resources:
+  - cluster-pg-wa-bridge.yaml
+  - db-scheduledbackup-wa-bridge.yaml
   - deployment.yaml
   - svc.yaml
 

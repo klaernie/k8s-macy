@@ -1,4 +1,6 @@
 resources:
+  - cluster-pg-insta-bridge.yaml
+  - db-scheduledbackup-insta-bridge.yaml
   - deployment.yaml
   - svc.yaml
 

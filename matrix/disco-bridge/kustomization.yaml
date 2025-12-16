@@ -1,4 +1,6 @@
 resources:
+  - cluster-pg-disco-bridge.yaml
+  - db-scheduledbackup-disco-bridge.yaml
   - deployment.yaml
   - svc.yaml
 
