@@ -1,1 +1,4 @@
 **/charts/
+# vim swap files
+**/*.swp
+**/*.swo
