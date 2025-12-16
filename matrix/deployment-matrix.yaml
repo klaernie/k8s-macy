@@ -83,6 +83,9 @@ spec:
             - mountPath: /config/as-instabridge.yaml
               name: insta-bridge
               subPath: registration.yaml
+            - mountPath: /config/as-imessage.yaml
+              name: imsg-bridge
+              subPath: registration.yaml
             - mountPath: /data
               name: matrix-pv
         - name: postfix-sidecar
@@ -123,3 +126,6 @@ spec:
         - name: insta-bridge
           secret:
             secretName: as-insta-bridge
+        - name: imsg-bridge
+          secret:
+            secretName: as-imessage-bridge
