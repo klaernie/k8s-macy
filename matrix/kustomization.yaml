@@ -2,6 +2,9 @@ resources:
   - namespace-matrix.yaml
   - secrets.enc.yaml
 
+  - deployment-mx.yaml
+  - service-mx.yaml
+
   - db-backup-store.yaml
 
   - cluster-pg-synapse.yaml

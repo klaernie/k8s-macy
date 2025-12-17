@@ -88,15 +88,6 @@ spec:
               subPath: registration.yaml
             - mountPath: /data
               name: matrix-pv
-        - name: postfix-sidecar
-          image: juanluisbaptiste/postfix:latest
-          imagePullPolicy: Always
-          env:
-            - name: LOG_SUBJECT
-              value: "yes"
-          envFrom:
-            - secretRef:
-                name: postfix-config
 
       dnsPolicy: ClusterFirst
       restartPolicy: Always

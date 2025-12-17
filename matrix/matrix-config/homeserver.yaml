@@ -59,9 +59,10 @@ trusted_key_servers:
   - server_name: "matrix.org"
 
 email:
-  smtp_host: localhost
+  smtp_host: mx.matrix.svc.cluster.local
   smtp_port: 25
   notif_from: matrix@mia.ak-online.be
+  enable_notifs: true
 
 serve_server_wellknown: true
 enable_search: true
