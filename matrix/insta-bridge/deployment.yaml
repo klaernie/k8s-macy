@@ -22,7 +22,7 @@ spec:
       name: matrix
     spec:
       containers:
-        - image: dock.mau.dev/mautrix/meta:latest
+        - image: dock.mau.dev/mautrix/meta:v25.12
           imagePullPolicy: Always
           name: insta-bridge
           env:
