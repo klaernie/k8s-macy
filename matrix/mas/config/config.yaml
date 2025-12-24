@@ -55,7 +55,7 @@ passwords:
 matrix:
   kind: synapse
   homeserver: ak-online.be
-  endpoint: https://matrix.cloud.ak-online.be
+  endpoint: http://synapse.matrix.svc
   secret_file: /config/hs_token
 upstream_oauth2:
   providers:
