@@ -1,5 +1,5 @@
 configMapGenerator:
-  - name: matrix
+  - name: synapse
     files:
       - homeserver.yaml
       - ak-online.be.log.config

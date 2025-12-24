@@ -36,7 +36,7 @@ spec:
             - name: MAUTRIX_double_puppet.secrets.ak-online.be
               valueFrom:
                 secretKeyRef:
-                  name: matrix-homeserver
+                  name: synapse
                   key: puppettoken
           envFrom:
             - secretRef:

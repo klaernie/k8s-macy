@@ -5,11 +5,10 @@ metadata:
   namespace: matrix
 spec:
   ports:
-    - name: matrix
-      port: 80
+    - port: 80
       protocol: TCP
-      targetPort: 8008
+      targetPort: http
   selector:
-    k8s-app: matrix
+    k8s-app: synapse
   sessionAffinity: None
   type: ClusterIP

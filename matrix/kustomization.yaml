@@ -11,8 +11,8 @@ resources:
   - db-scheduledbackup-synapse.yaml
 
   - pvc-synapse.yaml
-  - matrix-config
-  - deployment-matrix.yaml
+  - config
+  - deployment-synapse.yaml
   - service-synapse.yaml
   - ingress-matrix.yaml
 
