@@ -16,6 +16,8 @@ resources:
   - service-synapse.yaml
   - ingress-matrix.yaml
 
+  - mas
+
   - gc-bridge
   - disco-bridge
   - insta-bridge

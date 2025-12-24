@@ -81,24 +81,11 @@ oembed:
   additional_providers:
     - /config/oembed-providers.json
 
-oidc_providers:
-  - idp_id: keycloak
-    idp_name: "Keycloak"
-    issuer: "https://keycloak.ak-online.be/realms/master"
-    client_id: "synapse"
-    client_secret_path: /config/oidc-client-secret
-    scopes: ["openid", "profile"]
-    user_mapping_provider:
-      config:
-        localpart_template: "{{ user.preferred_username }}"
-        display_name_template: "{{ user.name }}"
-    backchannel_logout_enabled: true
-    allow_existing_users: true
-    enable_registration: true
-    attribute_requirements:
-      - attribute: roles
-        value: user
+matrix_authentication_service:
+  enabled: true
+  endpoint: http://mas.matrix.svc
+  secret_path: /config/mas-token
 
 password_config:
-  enabled: only_for_reauth
+  enabled: false
 # vim:ft=yaml

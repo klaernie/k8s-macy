@@ -1,0 +1,13 @@
+resources:
+  - cluster-pg-mas.yaml
+  - db-scheduledbackup-mas.yaml
+  - deployment-mas.yaml
+  - service-mas.yaml
+  - ingress-matrix-auth.yaml
+
+configMapGenerator:
+  - name: mas
+    files:
+      - config/config.yaml
+    options:
+      disableNameSuffixHash: true

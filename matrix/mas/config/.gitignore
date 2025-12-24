@@ -1,0 +1,6 @@
+# the files mentioned here are all secrets, so we can mount the entire folder in ../mas-cli
+encryption_file
+hs_token
+keycloak-client-secret
+keys
+synapse.yaml

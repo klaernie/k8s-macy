@@ -86,6 +86,9 @@ spec:
             - mountPath: /config/as-imessage.yaml
               name: imsg-bridge
               subPath: registration.yaml
+            - mountPath: /config/mas-token
+              name: mas
+              subPath: hs_token
             - mountPath: /data
               name: matrix-pv
 
@@ -120,3 +123,6 @@ spec:
         - name: imsg-bridge
           secret:
             secretName: as-imessage-bridge
+        - name: mas
+          secret:
+            secretName: mas

@@ -1,0 +1,3 @@
+#!/bin/bash -x
+cd "$(dirname "$0")"
+podman run --rm -e MAS_CONFIG=/config/config.yaml --env-file env -v "$(pwd)/config:/config" ghcr.io/element-hq/matrix-authentication-service:latest "$@"
