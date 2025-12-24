@@ -88,4 +88,6 @@ matrix_authentication_service:
 
 password_config:
   enabled: false
-# vim:ft=yaml
+
+experimental_features:
+  msc4108_enabled: true
