@@ -4,6 +4,7 @@ metadata:
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
     nginx.ingress.kubernetes.io/proxy-body-size: 550m
+    nginx.ingress.kubernetes.io/use-regex: "true"
   name: matrix
   namespace: matrix
 spec:
@@ -12,9 +13,17 @@ spec:
     - host: matrix.cloud.ak-online.be
       http:
         paths:
-          - backend:
+          - path: /
+            backend:
               service:
                 name: synapse
+                port:
+                  number: 80
+            pathType: ImplementationSpecific
+          - path: /_matrix/client/(.*)/(login|logout|refresh)
+            backend:
+              service:
+                name: mas
                 port:
                   number: 80
             pathType: ImplementationSpecific
