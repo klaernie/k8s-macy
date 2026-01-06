@@ -9,7 +9,7 @@ helmCharts:
     repo: https://vmware-tanzu.github.io/helm-charts
     releaseName: velero
     namespace: velero
-    version: 11.2.0
+    version: 11.3.2
     skipTests: true
     valuesInline:
       snapshotsEnabled: false
