@@ -71,7 +71,7 @@ upstream_oauth2:
         localpart:
           action: require
           template: |
-            {%- if "matrix-users" is in user.groups -%}
+            {%- if "users" is in user.groups -%}
               {{- user.preferred_username -}}
             {%- else -%}
               {{ "User is not in group"/0 }}
