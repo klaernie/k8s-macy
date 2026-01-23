@@ -74,6 +74,7 @@ app_service_config_files:
   - /config/as-instabridge.yaml
   - /config/as-imessage.yaml
   - /config/as-gc-bridge.yaml
+  - /config/as-gmsg-bridge.yaml
   - /config/as-wa-bridge.yaml
   - /config/as-disco-bridge.yaml
 

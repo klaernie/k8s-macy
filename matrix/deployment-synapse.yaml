@@ -83,6 +83,9 @@ spec:
             - mountPath: /config/as-gc-bridge.yaml
               name: gc-bridge
               subPath: registration.yaml
+            - mountPath: /config/as-gmsg-bridge.yaml
+              name: gmsg-bridge
+              subPath: registration.yaml
             - mountPath: /config/as-instabridge.yaml
               name: insta-bridge
               subPath: registration.yaml
@@ -120,6 +123,9 @@ spec:
         - name: gc-bridge
           secret:
             secretName: as-gc-bridge
+        - name: gmsg-bridge
+          secret:
+            secretName: as-gmsg-bridge
         - name: insta-bridge
           secret:
             secretName: as-insta-bridge

@@ -1,0 +1,12 @@
+resources:
+  - cluster-pg-gmsg-bridge.yaml
+  - db-scheduledbackup-gmsg-bridge.yaml
+  - deployment.yaml
+  - svc.yaml
+
+configMapGenerator:
+  - name: gmsg-bridge
+    files:
+      - config/config.yaml
+    options:
+      disableNameSuffixHash: true

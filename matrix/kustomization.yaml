@@ -20,6 +20,7 @@ resources:
 
   - gc-bridge
   - disco-bridge
+  - gmsg-bridge
   - insta-bridge
   - wa-bridge
 
