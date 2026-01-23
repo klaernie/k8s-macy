@@ -14,3 +14,5 @@ configMapGenerator:
       - config/config.yaml
     options:
       disableNameSuffixHash: true
+
+namespace: bolcz
