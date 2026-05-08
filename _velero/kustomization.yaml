@@ -11,7 +11,9 @@ helmCharts:
     namespace: velero
     version: 12.0.1
     skipTests: true
+    includeCRDs: true
     valuesInline:
+      upgradeCRDs: false
       snapshotsEnabled: false
       deployNodeAgent: true
       credentials:
