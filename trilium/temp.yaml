@@ -1,0 +1,44 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"networking.k8s.io/v1","kind":"Ingress","metadata":{"annotations":{"cert-manager.io/cluster-issuer":"letsencrypt-prod","nginx.ingress.kubernetes.io/proxy-body-size":"15m","traefik.ingress.kubernetes.io/redirect-entry-point":"https","traefik.ingress.kubernetes.io/router.tls":"true"},"labels":{"app.kubernetes.io/instance":"family","app.kubernetes.io/managed-by":"Helm","app.kubernetes.io/name":"trilium-notes","app.kubernetes.io/version":"0.47.2","helm.sh/chart":"trilium-notes-0.1.2"},"name":"family-notes","namespace":"trilium"},"spec":{"ingressClassName":"nginx","rules":[{"host":"family.trilium.cloud.ak-online.be","http":{"paths":[{"backend":{"service":{"name":"family-notes","port":{"name":"http"}}},"path":"/","pathType":"Prefix"}]}}],"tls":[{"hosts":["family.trilium.cloud.ak-online.be"],"secretName":"ingress-family-tls"}]}}
+    nginx.ingress.kubernetes.io/proxy-body-size: 15m
+    traefik.ingress.kubernetes.io/redirect-entry-point: https
+    traefik.ingress.kubernetes.io/router.tls: "true"
+  creationTimestamp: "2024-02-16T12:18:58Z"
+  generation: 3
+  labels:
+    app.kubernetes.io/instance: family
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: trilium-notes
+    app.kubernetes.io/version: 0.47.2
+    helm.sh/chart: trilium-notes-0.1.2
+  name: family-notes
+  namespace: trilium
+  resourceVersion: "97670299"
+  uid: cc8459f8-e473-4833-bb8f-3631b67c6995
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: family.trilium.cloud.ak-online.be
+    http:
+      paths:
+      - backend:
+          service:
+            name: family-notes
+            port:
+              name: http
+        path: /
+        pathType: Prefix
+  tls:
+  - hosts:
+    - family.trilium.cloud.ak-online.be
+    secretName: ingress-family-tls
+status:
+  loadBalancer:
+    ingress:
+    - ip: 2a01:488:67:1000:5bfa:53f9:0:1
+    - ip: 91.250.83.249

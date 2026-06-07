@@ -106,6 +106,9 @@ patches:
     - op: add
       path: /spec/ingressClassName
       value: nginx
+    - op: add
+      path: /metadata/namespace
+      value: trilium
   target:
     group: networking.k8s.io
     version: v1beta1
