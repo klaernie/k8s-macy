@@ -28,12 +28,12 @@ network:
   identity_change_notices: false
   # Should the bridge mark you as online on WhatsApp when you send typing notifications?
   # Full presence bridging is not supported.
-  send_presence_on_typing: false
+  send_presence_on_typing: true
   # Should WhatsApp status messages be bridged into a Matrix room?
   enable_status_broadcast: true
   # Should sending WhatsApp status messages be allowed?
   # This can cause issues if the user has lots of contacts, so it's disabled by default.
-  disable_status_broadcast_send: true
+  disable_status_broadcast_send: false
   # Should the status broadcast room be muted and moved into low priority by default?
   # This is only applied when creating the room, the user can unmute it later.
   mute_status_broadcast: true
@@ -50,9 +50,9 @@ network:
   # Should the bridge detect URLs in outgoing messages, ask the homeserver to generate a preview,
   # and send it to WhatsApp? URL previews can always be sent using the `com.beeper.linkpreviews`
   # key in the event content even if this is disabled.
-  url_previews: false
+  url_previews: true
   # Should polls be sent using unstable MSC3381 event types?
-  extev_polls: false
+  extev_polls: true
   # Should view-once messages be disabled entirely?
   disable_view_once: false
   # Should the bridge always send "active" delivery receipts (two gray ticks on WhatsApp)
