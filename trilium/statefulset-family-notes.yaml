@@ -24,7 +24,7 @@ spec:
               value: /srv/trilium-data
             - name: TRILIUM_NETWORK_TRUSTEDREVERSEPROXY
               value: uniquelocal
-          image: ghcr.io/triliumnext/trilium:v0.100.0
+          image: ghcr.io/triliumnext/trilium:v0.103.0
           imagePullPolicy: IfNotPresent
           livenessProbe:
             httpGet:
