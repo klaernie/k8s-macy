@@ -6,6 +6,7 @@ metadata:
     app.kubernetes.io/name: trilium-notes
   name: family-notes
 spec:
+  revisionHistoryLimit: 3
   replicas: 1
   selector:
     matchLabels:
