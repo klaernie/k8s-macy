@@ -46,7 +46,9 @@ spec:
       securityContext:
         fsGroup: 10000
   volumeClaimTemplates:
-    - metadata:
+    - apiVersion: v1
+      kind: PersistentVolumeClaim
+      metadata:
         name: trilium-data
       spec:
         accessModes:
