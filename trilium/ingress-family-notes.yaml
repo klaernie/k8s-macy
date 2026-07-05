@@ -1,0 +1,30 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/proxy-body-size: 15m
+    traefik.ingress.kubernetes.io/redirect-entry-point: https
+    traefik.ingress.kubernetes.io/router.tls: "true"
+  labels:
+    app.kubernetes.io/instance: family
+    app.kubernetes.io/name: trilium-notes
+  name: family-notes
+  namespace: trilium
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: family.trilium.cloud.ak-online.be
+      http:
+        paths:
+          - backend:
+              service:
+                name: family-notes
+                port:
+                  name: http
+            path: /
+            pathType: Prefix
+  tls:
+    - hosts:
+        - family.trilium.cloud.ak-online.be
+      secretName: ingress-family-tls
