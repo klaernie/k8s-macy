@@ -8,7 +8,7 @@ spec:
   - 10.4.0.2/32
   - 172.16.42.0/24
   - 172.16.0.0/22
-  publicKey: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  publicKey: BckTCyxS+do1RCSUwMi9y8WDmTDUiUr4r24w5pe+rUI=
   persistentKeepalive: 10
   endpoint:
     dnsOrIP:
