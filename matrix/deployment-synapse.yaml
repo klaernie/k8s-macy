@@ -97,7 +97,6 @@ spec:
               subPath: hs_token
             - mountPath: /data
               name: data
-
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler

@@ -85,7 +85,6 @@ spec:
                       path: hs_token
                     - key: keycloak-client-secret
                       path: keycloak-client-secret
-
         - name: mas-keys
           secret:
             secretName: mas-keys

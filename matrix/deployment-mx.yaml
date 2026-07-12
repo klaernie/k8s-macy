@@ -31,7 +31,6 @@ spec:
           envFrom:
             - secretRef:
                 name: postfix-config
-
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
