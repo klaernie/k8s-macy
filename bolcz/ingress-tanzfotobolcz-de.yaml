@@ -6,6 +6,7 @@ metadata:
   name: tanzfoto-bolcz-de
   namespace: bolcz
 spec:
+  ingressClassName: nginx
   rules:
   - host: &host tanzfotobolcz.de
     http:

@@ -6,6 +6,7 @@ metadata:
   name: renebolcz-customer
   namespace: bolcz
 spec:
+  ingressClassName: nginx
   rules:
   - host: &host renebolcz.customer.ak-online.be
     http:
