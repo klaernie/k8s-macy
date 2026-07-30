@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
-  name: tanzfoto-bolcz-de
+  name: tanzfotobolcz-de
   namespace: bolcz
 spec:
   ingressClassName: nginx
