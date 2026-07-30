@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+  name: tanzfoto-bolcz-de
+  namespace: bolcz
+spec:
+  rules:
+  - host: &host tanzfoto-bolcz.de
+    http:
+      paths:
+      - backend:
+          service:
+            name: nginx
+            port:
+              number: 80
+        pathType: ImplementationSpecific
+  tls:
+  - hosts:
+    - *host
+    secretName: tanzfotobolcz-de-tls

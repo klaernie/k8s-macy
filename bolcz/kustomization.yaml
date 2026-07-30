@@ -5,4 +5,5 @@ resources:
   - deployment-nginx.yaml
   - svc-nginx.yaml
   - ingress-renebolcz-customer.yaml
+  - ingress-tanzfotobolcz-de.yaml
 
