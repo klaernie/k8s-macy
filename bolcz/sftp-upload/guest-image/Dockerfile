@@ -1,6 +1,6 @@
 FROM containerssh/agent:latest AS agent
 
-FROM debian:13
+FROM debian:20260803
 
 LABEL org.opencontainers.image.source https://github.com/klaernie/k8s-macy
 
