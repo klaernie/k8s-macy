@@ -341,9 +341,9 @@ direct_media:
 # See https://docs.mau.fi/bridges/general/backfill.html for more details.
 backfill:
     # Whether to do backfilling at all.
-    enabled: false
+    enabled: true
     # Maximum number of messages to backfill in empty rooms.
-    max_initial_messages: 50
+    max_initial_messages: 100
     # Maximum number of missed messages to backfill after bridge restarts.
     max_catchup_messages: 500
     # If a backfilled chat is older than this number of hours,
