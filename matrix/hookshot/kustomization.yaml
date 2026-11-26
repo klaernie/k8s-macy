@@ -53,17 +53,22 @@ patches:
                   - containerPort: 9002
                     name: widgets
                     protocol: TCP
-                volumeMounts:
-                  - mountPath: /data/registration.yml
-                    name: registration
-                    subPath: registration.yaml
-                  - mountPath: /data/passkey.pem
-                    name: passkey
-                    subPath: passkey.pem
             volumes:
-              - name: registration
-                secret:
-                  secretName: as-hookshot
-              - name: passkey
-                secret:
-                  secretName: hookshot
+              - name: config
+                projected:
+                  sources:
+                    - configMap:
+                        name: hookshot
+                        items:
+                          - key: config.yaml
+                            path: config.yml
+                    - secret:
+                        name: as-hookshot
+                        items:
+                          - key: registration.yaml
+                            path: registration.yml
+                    - secret:
+                        name: hookshot
+                        items:
+                          - key: passkey.pem
+                            path: passkey.pem
