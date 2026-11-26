@@ -55,6 +55,7 @@ patches:
                     protocol: TCP
             volumes:
               - name: config
+                configMap: null
                 projected:
                   sources:
                     - configMap:
