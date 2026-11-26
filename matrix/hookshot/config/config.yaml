@@ -3,7 +3,7 @@
 bridge:
   # Basic homeserver configuration
   domain: ak-online.be
-  url: http://synapse:80
+  url: https://matrix.cloud.ak-online.be
   #mediaUrl: https://example.com
   port: 9993
   bindAddress: 0.0.0.0
