@@ -50,7 +50,7 @@ listeners:
 
 permissions:
   # (Optional) Permissions for using the bridge. See docs/setup.md#permissions for help
-  - actor: @kandre:ak-online.be
+  - actor: '@kandre:ak-online.be'
     services:
       - service: "*"
         level: admin
