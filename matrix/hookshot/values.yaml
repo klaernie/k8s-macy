@@ -1,5 +1,6 @@
 image:
   tag: 7.6.2
+  repository: ghcr.io/matrix-org/matrix-hookshot
 
 serviceAccount:
   create: false
