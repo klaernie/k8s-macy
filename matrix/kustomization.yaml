@@ -18,6 +18,7 @@ resources:
 
   - mas
 
+  - hookshot
   - gc-bridge
   - disco-bridge
   - gmsg-bridge

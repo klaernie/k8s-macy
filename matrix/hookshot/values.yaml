@@ -1,0 +1,4 @@
+serviceAccount:
+  create: false
+hookshot:
+  existingConfigMap: hookshot
