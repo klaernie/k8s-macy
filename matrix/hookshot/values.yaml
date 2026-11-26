@@ -1,5 +1,5 @@
 image:
-  tags: 7.6.2
+  tag: 7.6.2
 
 serviceAccount:
   create: false
