@@ -9,7 +9,7 @@ bridge:
   bindAddress: 0.0.0.0
 logging:
   # Logging settings. You can have a severity debug,info,warn,error
-  level: info
+  level: debug
   colorize: true
   json: false
   timestampFormat: HH:mm:ss:SSS
